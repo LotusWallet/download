@@ -2,4 +2,4 @@
 
 LotusWallet download Page.
 
-newest version: V2.2.4
+newest version: V2.2.5
