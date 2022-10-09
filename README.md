@@ -6,6 +6,7 @@ LotusWallet download Page.
 
 |Version | Update Introduction | Time |
 |-----------|-----------|-----------|
+|2.3.6 | Modified UI text wording | 2022-08-08 18:01:32 |
 |2.3.1 | fix bugs | 2022-06-01 12:31:00 |
 |2.3.0 | add KCC chain support | 2022-05-29 10:50:49 |
 |2.2.11 | Add more dapp support details, Fix some UI bugs | 2022-05-21 19:38:47 |
