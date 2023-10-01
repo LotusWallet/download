@@ -6,6 +6,9 @@ LotusWallet download Page.
 
 |Version | Update Introduction | Time |
 |-----------|-----------|-----------|
+|2.5.1 | Interface and element optimization | 2023-10-01 10:59:26 |
+|2.5.0 | UI fine-tuning, gas display issue fixed | 2023-09-18 22:28:25 |
+|2.4.1 | Add support for Bitgert chain | 2023-02-07 18:07:34 |
 |2.4.0 | 1. Interactive information adjustment; 2. Certificate switching optimization; | 2022-11-26 15:12:00 |
 |2.3.8 | Adjust the presentation of referral rewards; Prepare for adding more EVM chains; | 2022-10-22 18:42:00 |
 |2.3.6 | Modified UI text wording | 2022-08-08 18:01:32 |
