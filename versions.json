@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "channel": "stable",
+  "minSupportedVersionCode": 0,
+  "releases": [
+    {
+      "versionName": "3.0.3",
+      "versionCode": 30003,
+      "releaseDate": "2026-10-14",
+      "mandatory": false,
+      "sizeBytes": 4372618,
+      "sha256": "7a21db2e2f5f9eb238c540da79757d54c6608182fa36959791a93ed9ca01f808",
+      "downloadUrl": "https://github.com/LotusWallet/download/releases/download/v3.0.3/LotusWallet-v3.0.3.apk",
+      "latestUrl": "https://github.com/LotusWallet/download/releases/latest/download/LotusWallet.apk",
+      "releasePageUrl": "https://github.com/LotusWallet/download/releases/tag/v3.0.3"
+    }
+  ],
+  "legacy": [],
+  "latest": {
+    "versionName": "3.0.3",
+    "versionCode": 30003,
+    "releaseDate": "2026-10-14",
+    "mandatory": false,
+    "sizeBytes": 4372618,
+    "sha256": "7a21db2e2f5f9eb238c540da79757d54c6608182fa36959791a93ed9ca01f808",
+    "downloadUrl": "https://github.com/LotusWallet/download/releases/download/v3.0.3/LotusWallet-v3.0.3.apk",
+    "latestUrl": "https://github.com/LotusWallet/download/releases/latest/download/LotusWallet.apk",
+    "releasePageUrl": "https://github.com/LotusWallet/download/releases/tag/v3.0.3"
+  }
+}
