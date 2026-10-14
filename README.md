@@ -15,7 +15,6 @@ LotusWallet Android 客户端的**唯一官方下载入口**。
 | 下载页（推荐） | <https://github.com/LotusWallet/download/releases/latest> |
 | 直链（永远指向最新版） | <https://github.com/LotusWallet/download/releases/latest/download/LotusWallet.apk> |
 | 指定版本 | <https://github.com/LotusWallet/download/releases/download/v3.0.3/LotusWallet-v3.0.3.apk> |
-| 网页版下载页 | <https://lotuswallet.github.io/download/> |
 
 安装：下载 APK → 在系统设置里允许「安装未知来源应用」→ 打开安装。
 首次启动会要求设置主密码，**没有账号、没有注册**。
@@ -90,10 +89,15 @@ download/
 ├── README.md          ← 你正在看的文件：下载入口
 ├── CHANGELOG.md       ← 完整更新日志（每个版本的改动）
 ├── versions.json      ← 机器可读版本清单（App「检查更新」读它）
-├── index.html         ← GitHub Pages 下载页
+├── index.html         ← 网页版下载页（尚未对外发布，见下方说明）
 ├── *.apk              ← 2.x 时代的安装包，保留不动
 └── .nojekyll
 ```
+
+> **关于 `index.html`**：它是自包含的下载页（自己 `fetch('./versions.json')` 读版本、大小与
+> sha256），但**没有启用 GitHub Pages** —— 按项目约定，GitHub 只用于存放与分发，
+> 不使用它的部署能力。文件留在仓库里备用，将来可以托管到别处。
+> 现阶段请直接走上面的 Releases 链接。
 
 **出于稳定性考虑，3.x 的安装包不放仓库里，而是挂在 GitHub Releases 上**：
 
