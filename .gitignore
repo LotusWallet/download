@@ -1,0 +1,10 @@
+# 安装包不进 git —— 3.x 的 APK 挂在 GitHub Releases 上（见 README）。
+# 2.x 时代已经提交进去的那几个 .apk 保持被跟踪，不受此规则影响。
+/LotusWallet-*.apk
+/v[0-9]*/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
