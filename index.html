@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LotusWallet 下载</title>
+<meta name="description" content="LotusWallet Android 客户端官方下载页。自持密钥、本地加密、无服务端。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fff'/%3E%3Cpath d='M19.1,33.8 L36.3,33.6 L50,54.3 L63.7,33.6 L80.5,33.6 L60.1,66.4 L40.4,66.4 Z' fill='%2323345C'/%3E%3Ccircle cx='49.9' cy='50.3' r='10.2' fill='%2339D1FF'/%3E%3C/svg%3E">
+<style>
+  /* 单文件、零外部依赖。下载页本身要是「打不开就没法下载」的，所以
+     不引任何字体、CSS 框架、JS 库 —— 断网/CDN 挂掉也照样能打开。 */
+  :root {
+    --bg: #F5F7FA;
+    --card: #FFFFFF;
+    --text: #10131A;
+    --muted: #5C6472;
+    --line: #E3E7EE;
+    --brand: #2C5BEE;
+    --brand-ink: #FFFFFF;
+    --accent: #0284A8;
+    --warn-bg: #FFF6E5;
+    --warn-line: #F0D9A8;
+    --warn-text: #7A5A12;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0B0D10;
+      --card: #141719;
+      --text: #EDF0F4;
+      --muted: #98A1AE;
+      --line: #262B31;
+      --brand: #97B2F9;
+      --brand-ink: #0B0D10;
+      --accent: #39D1FF;
+      --warn-bg: #241E10;
+      --warn-line: #4A3B18;
+      --warn-text: #E5C97A;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 20px 64px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  header { padding: 56px 0 28px; display: flex; align-items: center; gap: 16px; }
+  .logo { width: 60px; height: 60px; flex: none; }
+  h1 { font-size: 26px; margin: 0; letter-spacing: -0.02em; }
+  .slogan { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    font-size: 15px; margin: 0 0 14px;
+    color: var(--muted); font-weight: 600; letter-spacing: 0.01em;
+  }
+
+  .ver { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+  .ver b { font-size: 30px; letter-spacing: -0.02em; }
+  .ver span { color: var(--muted); font-size: 13px; }
+  .tag {
+    font-size: 12px; padding: 2px 9px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted);
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 18px;
+    padding: 15px 22px;
+    background: var(--brand); color: var(--brand-ink);
+    border-radius: 14px; text-decoration: none;
+    font-size: 16px; font-weight: 600;
+    border: none; cursor: pointer;
+  }
+  .btn.ghost {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line); font-weight: 500;
+    font-size: 14px; padding: 12px 20px; margin-top: 10px;
+  }
+  .meta { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px; background: rgba(127,127,127,0.12);
+    padding: 1px 5px; border-radius: 5px; word-break: break-all;
+  }
+
+  ol, ul { padding-left: 20px; margin: 10px 0 0; }
+  li { margin: 6px 0; font-size: 14px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+
+  .notice {
+    background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-text);
+    border-radius: 12px; padding: 12px 14px; font-size: 13.5px; margin-bottom: 16px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 8px 9px 0; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; font-size: 12.5px; }
+  tr:last-child td { border-bottom: none; }
+  td.v { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); }
+
+  footer { margin-top: 28px; font-size: 12.5px; color: var(--muted); text-align: center; }
+  footer a { color: var(--muted); }
+
+  .skel { height: 12px; border-radius: 6px; background: rgba(127,127,127,0.15); margin: 8px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!--
+      与安装包内的应用图标同源：路径数据直接来自
+      app/src/main/res/drawable/ic_launcher_foreground.xml（由旧版 icon_logo.png 矢量化）。
+      遮挡层级也是原设计的顺序：右笔画(深藏青) → 青色圆 → 左笔画(蓝渐变)。
+    -->
+    <svg class="logo" viewBox="0 0 512 512" aria-hidden="true">
+      <rect width="512" height="512" rx="116" fill="#FFFFFF"/>
+      <!-- 右笔画 -->
+      <path fill="#23345C" d="M307.8,339.2 L284.4,301.4 L297.4,289.1 L302.4,281.2 L306.8,269.7 L308.2,258.9 L306.0,242.3 L301.0,230.8 L289.1,216.8 L278.7,209.9 L286.6,195.5 L299.9,179.3 L312.2,173.6 L323.7,172.1 L411.5,172.1 L411.9,175.4 L331.2,317.9 L317.9,334.1 L307.8,339.2 Z"/>
+      <!-- 青色圆 -->
+      <path fill="#39D1FF" d="M203.4,257.2 A52.3,52.3 0 1 1 308.0,257.2 A52.3,52.3 0 1 1 203.4,257.2 Z"/>
+      <!-- 左笔画，垂直方向的蓝渐变 -->
+      <linearGradient id="stroke" gradientUnits="userSpaceOnUse" x1="256" y1="172.1" x2="256" y2="339.9">
+        <stop offset="0" stop-color="#598AF3"/>
+        <stop offset="1" stop-color="#204FEA"/>
+      </linearGradient>
+      <path fill="url(#stroke)" d="M307.1,339.9 L207.0,339.9 L193.4,334.8 L185.1,326.6 L176.4,313.6 L98.0,173.2 L186.9,172.1 L198.4,173.6 L211.4,180.0 L219.6,189.0 L237.6,218.6 L304.6,332.3 L308.2,338.8 L307.1,339.9 Z"/>
+    </svg>
+    <div>
+      <h1>LotusWallet</h1>
+      <div class="slogan">自持密钥 · 本地加密 · 无服务端</div>
+    </div>
+  </header>
+
+  <div class="card" id="latest-card">
+    <h2>最新版本</h2>
+    <div id="latest-body">
+      <div class="skel" style="width:40%"></div>
+      <div class="skel" style="width:70%"></div>
+      <div class="skel" style="width:55%"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>安装步骤</h2>
+    <ol>
+      <li>下载上面的 APK 文件。</li>
+      <li>系统提示「不允许安装未知来源应用」时，前往设置里为本浏览器 / 文件管理器放行。</li>
+      <li>打开安装包完成安装，首次启动会让你设置主密码。</li>
+      <li><b>没有注册，也没有账号。</b>主密码和助记词请自行离线备份 —— 丢了我们无法帮你找回。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>校验下载完整性</h2>
+    <p class="small muted" style="margin:0">把结果与本页显示的 sha256 对比。两者一致，说明文件在传输过程中没有被改动。</p>
+    <p class="small" style="margin:10px 0 0">
+      Linux / macOS：<br><code>shasum -a 256 LotusWallet-*.apk</code>
+    </p>
+    <p class="small" style="margin:10px 0 0">
+      Windows PowerShell：<br><code>Get-FileHash .\LotusWallet-*.apk -Algorithm SHA256</code>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>系统要求</h2>
+    <table>
+      <tr><td>Android 版本</td><td class="v">8.0（API 26）及以上</td></tr>
+      <tr><td>安装包 ID</td><td class="v">com.lotuswallet.app</td></tr>
+      <tr><td>架构</td><td class="v">通用</td></tr>
+      <tr><td>更新方式</td><td>应用内「关于 → 检查更新」，只提示，不自动下载</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>历史版本</h2>
+    <div id="history"><div class="skel" style="width:60%"></div></div>
+  </div>
+
+  <footer>
+    <p>
+      源码 <a href="https://github.com/LotusWallet/lotuswallet-android">lotuswallet-android</a> ·
+      公共数据 <a href="https://github.com/LotusWallet/assets">assets</a> ·
+      全部版本 <a href="https://github.com/LotusWallet/download/releases">releases</a>
+    </p>
+    <p>请只从本页或本仓库 Releases 下载。我们不会通过聊天工具或第三方网盘分发安装包。</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  // 只读同目录下的 versions.json —— 与 App 的「检查更新」读的是同一份数据，
+  // 因此这里显示的版本一定和 App 提示的版本一致。
+  var RAW = './versions.json';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function mb(bytes) {
+    if (!bytes) return '';
+    return (bytes / 1048576).toFixed(2) + ' MB';
+  }
+
+  function fallback() {
+    document.getElementById('latest-body').innerHTML =
+      '<p class="small muted" style="margin:0">读取版本清单失败（可能是离线或浏览器的跨域限制）。</p>' +
+      '<a class="btn" href="https://github.com/LotusWallet/download/releases/latest">前往 Releases 下载</a>';
+    document.getElementById('history').innerHTML =
+      '<p class="small muted" style="margin:0">同样请见 <a href="https://github.com/LotusWallet/download/releases">Releases 页面</a>。</p>';
+  }
+
+  fetch(RAW, { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (doc) {
+      var latest = doc.latest;
+      if (!latest) { fallback(); return; }
+
+      var url = latest.latestUrl || latest.downloadUrl;
+      var html = '' +
+        '<div class="ver">' +
+          '<b>' + esc(latest.versionName) + '</b>' +
+          '<span>' + esc(latest.releaseDate || '') + '</span>' +
+          (latest.code ? '<span class="tag">' + esc(latest.code) + '</span>' : '') +
+        '</div>';
+
+      if (url) {
+        html += '<a class="btn" href="' + esc(url) + '">下载 APK' +
+                (latest.sizeBytes ? '（' + mb(latest.sizeBytes) + '）' : '') + '</a>';
+      }
+      if (latest.releasePageUrl) {
+        html += '<a class="btn ghost" href="' + esc(latest.releasePageUrl) +
+                '">查看更新说明</a>';
+      }
+      if (latest.sha256) {
+        html += '<div class="meta">sha256<br><code>' + esc(latest.sha256) + '</code></div>';
+      }
+      document.getElementById('latest-body').innerHTML = html;
+
+      var rel = (doc.releases || []).slice();
+      var legacy = doc.legacy || [];
+      if (!rel.length && !legacy.length) {
+        document.getElementById('history').innerHTML =
+          '<p class="small muted" style="margin:0">暂无历史版本记录。</p>';
+        return;
+      }
+
+      var rows = '';
+      rel.forEach(function (r) {
+        rows += '<tr><td>' + esc(r.versionName) + '</td><td class="v">' +
+                esc(r.releaseDate || '') + '</td><td class="v">' + mb(r.sizeBytes) + '</td><td>' +
+                (r.downloadUrl ? '<a href="' + esc(r.downloadUrl) + '">下载</a>' : '') +
+                '</td></tr>';
+      });
+      legacy.forEach(function (r) {
+        rows += '<tr><td>' + esc(r.versionName) + '</td><td class="v">' +
+                esc(r.releaseDate || '') + '</td><td class="v">' + mb(r.sizeBytes) + '</td><td>' +
+                (r.downloadUrl ? '<a href="' + esc(r.downloadUrl) + '">下载</a>' : '') +
+                '</td></tr>';
+      });
+      document.getElementById('history').innerHTML =
+        '<table><tr><th>版本</th><th>日期</th><th>大小</th><th></th></tr>' + rows + '</table>';
+    })
+    .catch(fallback);
+})();
+</script>
+</body>
+</html>
